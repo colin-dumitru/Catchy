@@ -1,0 +1,1 @@
+gcc edu_rf_notification_NotifierBridge.c edu_rf_notification_NotifierBridge.h -o ../libNotifierBridgeImpl.so -I/opt/jdk1.7.0_21/include -I/opt/jdk1.7.0_21/include/linux -nostartfiles -shared -fPIC -lnotify `pkg-config --cflags --libs glib-2.0 gdk-pixbuf-2.0`

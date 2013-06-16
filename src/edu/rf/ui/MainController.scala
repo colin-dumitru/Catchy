@@ -1,9 +1,11 @@
 package edu.rf.ui
 
 import javafx.fxml.FXML
-import javafx.scene.control.{TextField, Button}
-import javafx.event.ActionEvent
-import edu.rf.notification.Notifier
+import javafx.scene.layout.AnchorPane
+import javafx.animation.TranslateTransition
+import javafx.animation.Interpolator._
+import javafx.util.Duration
+import javafx.scene.input.MouseEvent
 
 /**
  * Catalin Dumitru
@@ -12,13 +14,24 @@ import edu.rf.notification.Notifier
  */
 class MainController {
   @FXML
-  private val someFucker: Button = null
-  @FXML
-  private val someFuckingInput: TextField = null
+  private val contentPane: AnchorPane = null
 
-  def handleClickAction(event: ActionEvent) {
-    Notifier.displayNotification("Does this work?", someFuckingInput.getText)
-    someFucker.setText("Fuck yea it works")
+  def hoverSidePane(event: MouseEvent) {
+    val transition = new TranslateTransition(Duration.millis(400), contentPane)
+
+    transition.setToX(180.0)
+    transition.setInterpolator(EASE_BOTH)
+
+    transition.play()
+  }
+
+  def hoverSidePaneLeave(event: MouseEvent) {
+    val transition = new TranslateTransition(Duration.millis(400), contentPane)
+
+    transition.setToX(0.0)
+    transition.setInterpolator(EASE_BOTH)
+
+    transition.play()
   }
 
 

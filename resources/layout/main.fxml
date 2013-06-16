@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml"
-          fx:controller="edu.rf.ui.MainController">
+<GridPane alignment="CENTER" hgap="10.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0"
+          vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.rf.ui.MainController">
     <children>
-        <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Pane prefHeight="500.0" prefWidth="168.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <TextField fx:id="someFuckingInput" prefWidth="200.0" text="Hody"/>
-                <Button id="" fx:id="someFucker" mnemonicParsing="false" onAction="#handleClickAction" style=""
-                        styleClass="green" text="Is It Working?"/>
+                <AnchorPane id="AnchorPane" fx:id="contentPane" layoutX="-181.0" layoutY="0.0" prefHeight="500.0"
+                            prefWidth="481.0" style="">
+                    <children>
+                        <ListView layoutX="228.0" layoutY="54.0" prefHeight="432.0" prefWidth="239.0"/>
+                        <Pane layoutX="0.0" layoutY="0.0" onMouseEntered="#hoverSidePane"
+                              onMouseExited="#hoverSidePaneLeave" prefHeight="500.0" prefWidth="219.0"
+                              style="-fx-background-color: lightblue;">
+                            <children>
+                                <Button alignment="CENTER" cancelButton="false" layoutX="14.0" layoutY="14.0"
+                                        mnemonicParsing="false" prefWidth="135.0" text="Button"/>
+                                <ListView layoutX="14.0" layoutY="54.0" prefHeight="432.0" prefWidth="196.0"/>
+                            </children>
+                        </Pane>
+                    </children>
+                </AnchorPane>
             </children>
-        </FlowPane>
+        </Pane>
     </children>
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>

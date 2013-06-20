@@ -7,6 +7,7 @@ class Config:
     debug = True
     resourceRoot = "../../resources/"
     maxNotification = 10
+    maxMenuItems = 10
 
 
 class G:

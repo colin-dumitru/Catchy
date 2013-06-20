@@ -1,5 +1,7 @@
 __author__ = 'colin'
 
+import os
+
 from application import *
 
 
@@ -26,11 +28,11 @@ class Daemon:
             except OSError:
                 return False
 
-    def start(self, callback):
+    def start(self, app):
         if self.applicationRunning():
             print("Application already running, exiting...")
         else:
-            self.beginListen(callback)
+            self.beginListen(app)
 
     def publishPid(self):
         try:
@@ -41,24 +43,19 @@ class Daemon:
         except IOError:
             self.pid = None
 
-    def beginListen(self, callback):
+    def beginListen(self, app):
         log("starting daemon")
         self.publishPid()
 
-        while True:
-            callback()
-            time.sleep(60)
+        app.start()
 
 
 def main():
     app = App()
     app.initialize()
 
-    def update():
-        app.update()
-
     daemon = Daemon()
-    daemon.start(update)
+    daemon.start(app)
 
 
 if __name__ == "__main__":

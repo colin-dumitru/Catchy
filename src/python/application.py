@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 from gi.repository import Gtk
 from gi.repository import AppIndicator3 as appindicator
 from gi.repository import GObject
+from gi.repository import Gio
 
 from common import *
 from notify import *
@@ -34,6 +35,13 @@ class Item:
     @staticmethod
     def deleteWithNullGuid():
         G.connection.execute("DELETE FROM item WHERE guid = NULL")
+
+    @staticmethod
+    def getExistingGuids(feedId, guids):
+        rows = G.connection.execute(
+            "SELECT guid FROM item WHERE feed_id = ? AND guid IN (%s)" % ",".join(["?"] * len(guids)),
+            [feedId] + guids).fetchall()
+        return [row[0] for row in rows]
 
     def __init__(self):
         self.title = None
@@ -61,17 +69,16 @@ class Feed:
         self.title = None
         self.url = None
         self.notify = False
-        self.lastValidGuid = None
+        self.unread = 0
 
     @staticmethod
     def getAll():
         return [Feed.fromRow(row) for row in G.connection.execute("SELECT * FROM feed")]
 
     @staticmethod
-    def getLastGuid(feedId, count):
-        rows = G.connection.execute("SELECT guid FROM item WHERE feed_id = ?1 ORDER BY pub_date desc LIMIT ?2",
-                                    (feedId, count)).fetchall()
-        return [row[0] for row in rows]
+    def getUnread(feed_id):
+        return G.connection.execute("SELECT COUNT(*) FROM item WHERE feed_id = ?1 AND read = 0",
+                                    (feed_id, )).fetchone()[0]
 
 
 class MetadataCache:
@@ -129,8 +136,15 @@ class App:
         hBar.show()
         self.menu.append(hBar)
 
-    def createAndBindMenuItem(self, label, method, param=None):
-        item = Gtk.MenuItem(label)
+    def createAndBindMenuItem(self, label, method, param=None, image=None):
+        img = None
+
+        if image:
+            img = Gtk.Image(stock=image)
+
+        item = Gtk.ImageMenuItem(label=label, image=img)
+        item.set_always_show_image(True)
+
         item.show()
         item.connect_object("activate", method, param)
         self.menu.append(item)
@@ -149,11 +163,11 @@ class App:
         for child in self.menu:
             self.menu.remove(child)
 
-        self.createAndBindMenuItem("Open", self.openApplication, "open")
+        self.createAndBindMenuItem("Open", self.openApplication, "open", image=Gtk.STOCK_OPEN)
         self.addMenuSeparator()
         self.initFeedItems()
         self.addMenuSeparator()
-        self.createAndBindMenuItem("Quit", self.quit, "quit")
+        self.createAndBindMenuItem("Quit", self.quit, "quit", image=Gtk.STOCK_CLOSE)
 
     def initFeedItems(self):
         self.cachedMenuItems = [self.createAndBindMenuItem("Feed", self.openFeed, index) for index in
@@ -164,6 +178,7 @@ class App:
 
     def start(self):
         GObject.threads_init()
+
         self.update()
         Gtk.main()
 
@@ -183,15 +198,13 @@ class App:
         self.cachedTimer.start()
 
     def updateMenuItems(self):
-        sortedFeeds = sorted([feed for feed in self.metadata.feeds if len(feed.items) > 0], key=lambda x: len(x.items))
+        for feed in self.metadata.feeds:
+            feed.unread = Feed.getUnread(feed.id)
+
+        sortedFeeds = sorted([feed for feed in self.metadata.feeds if feed.unread > 0], key=lambda x: x.unread)
         numFeeds = len(sortedFeeds)
 
-        for index in range(0, Config.maxMenuItems):
-            if index >= numFeeds:
-                self.cachedMenuItems[index].hide()
-            else:
-                self.cachedMenuItems[index].show()
-                self.updateMenuItemText(index, numFeeds, sortedFeeds)
+        self.updateMenuItem(numFeeds, sortedFeeds)
 
         if numFeeds == 0:
             self.cachedMenuItems[0].show()
@@ -199,18 +212,26 @@ class App:
 
         self.updateIndicatorIcon(numFeeds)
 
-    def updateIndicatorIcon(self, numFeeds):
-        if numFeeds > 0:
-            self.indicator.set_status(appindicator.IndicatorStatus.ATTENTION)
-        else:
-            self.indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    def updateMenuItem(self, numFeeds, sortedFeeds):
+        for index in range(0, Config.maxMenuItems):
+            if index >= numFeeds:
+                self.cachedMenuItems[index].hide()
+            else:
+                self.cachedMenuItems[index].show()
+                self.updateMenuItemText(index, numFeeds, sortedFeeds)
 
     def updateMenuItemText(self, index, numFeeds, sortedFeeds):
         if index == (Config.maxMenuItems - 1) and numFeeds > Config.maxMenuItems:
             self.cachedMenuItems[index].get_child().set_text("And (%d) more" % (numFeeds - Config.maxMenuItems))
         else:
             self.cachedMenuItems[index].get_child().set_text(
-                "%s (%d)" % (sortedFeeds[index].title, len(sortedFeeds[index].items)))
+                "%s (%d)" % (sortedFeeds[index].title, sortedFeeds[index].unread))
+
+    def updateIndicatorIcon(self, numFeeds):
+        if numFeeds > 0:
+            self.indicator.set_status(appindicator.IndicatorStatus.ATTENTION)
+        else:
+            self.indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
 
     def storeNewestItems(self):
         itemsUpdated = 0
@@ -230,8 +251,8 @@ class App:
     def loadItemsInFeed(self, feed):
         root = ET.fromstring(urllib.request.urlopen(feed.url).read())
         items = [Item.fromXml(item) for chanel in root.findall("channel") for item in chanel.findall("item")]
-        lastGuids = Feed.getLastGuid(feed.id, len(items))
-        feed.items = [item for item in items if item.guid not in lastGuids]
+        existingGuids = Item.getExistingGuids(feed.id, [item.guid for item in items])
+        feed.items = [item for item in items if item.guid not in existingGuids]
 
     def loadItems(self):
         for feed in self.metadata.feeds:

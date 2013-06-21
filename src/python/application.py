@@ -1,11 +1,10 @@
-from threading import Timer
-
-__author__ = 'colin'
+__author__ = 'Colin Dumitru'
 
 import sqlite3
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
+from threading import Timer
 from gi.repository import Gtk
 from gi.repository import AppIndicator3 as appindicator
 from gi.repository import GObject
@@ -112,6 +111,7 @@ class App:
         self.menu = None
         self.cachedMenuItems = None
         self.cachedTimer = None
+        self.time = None
 
     def initialize(self):
         Notifier.initialize()
@@ -183,19 +183,32 @@ class App:
         Gtk.main()
 
     def update(self):
+        self.startStopwatch()
         log("updating feeds")
         G.connection = sqlite3.connect(Config.resourceRoot + "db/main.sqlite")
 
+        self.performUpdate()
+
+        G.connection.close()
+
+        self.cachedTimer = Timer(60, self.update)
+        self.cachedTimer.start()
+
+        self.printElapsed()
+
+    def performUpdate(self):
         self.metadata.update()
         self.loadItems()
         self.printNewestItems()
         self.storeNewestItems()
         self.updateMenuItems()
 
-        G.connection.close()
+    def startStopwatch(self):
+        self.time = time.time()
 
-        self.cachedTimer = Timer(60, self.update)
-        self.cachedTimer.start()
+    def printElapsed(self):
+        now = time.time()
+        log("look %d milliseconds to update feeds" % (now - self.time))
 
     def updateMenuItems(self):
         for feed in self.metadata.feeds:

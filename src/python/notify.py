@@ -1,3 +1,5 @@
+__author__ = 'Colin Dumitru'
+
 import notify2
 
 from common import *

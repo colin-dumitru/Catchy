@@ -1,4 +1,4 @@
-__author__ = 'colin'
+__author__ = 'Colin Dumitru'
 
 import os
 

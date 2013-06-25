@@ -36,5 +36,6 @@
     </rowConstraints>
     <stylesheets>
         <URL value="@../css/main.css"/>
+        <URL value="@../css/folderList.css"/>
     </stylesheets>
 </GridPane>

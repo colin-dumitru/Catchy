@@ -8,7 +8,7 @@
 <GridPane alignment="CENTER" hgap="10.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="464.0"
           vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.rf.ui.MainController">
     <fx:define>
-        <Model fx:id="modelCell"/>
+        <Model fx:id="model"/>
     </fx:define>
     <children>
         <Pane prefHeight="500.0" prefWidth="168.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
@@ -24,7 +24,7 @@
                                 <Button id="g" alignment="CENTER" cancelButton="false" layoutX="14.0" layoutY="14.0"
                                         mnemonicParsing="false" prefWidth="135.0" styleClass="green" text="Button"/>
                                 <ListView fx:id="folderList" layoutX="14.0" layoutY="54.0" prefHeight="432.0"
-                                          prefWidth="195.99990000000253" items="${modelCell.folders}">
+                                          prefWidth="195.99990000000253" items="${model.folders}">
 
                                 </ListView>
 

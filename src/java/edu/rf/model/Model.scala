@@ -1,7 +1,9 @@
 package edu.rf.model
 
 import javafx.beans.property.{SimpleObjectProperty, ObjectProperty}
-import javafx.collections.ObservableList
+import javafx.collections.{FXCollections, ObservableList}
+import scala.beans.BeanProperty
+import javafx.collections
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,19 +13,8 @@ import javafx.collections.ObservableList
  * To change this template use File | Settings | File Templates.
  */
 class Model {
-  val folders: ObjectProperty[ObservableList[Cell]] = new SimpleObjectProperty[ObservableList[Cell]](this, "list")
-
-  final def getFolders(): ObservableList[Cell] = {
-    folders.get()
-  }
-
-  final def setFolders(folderList: ObservableList[Cell]) {
-    folders.set(folderList)
-  }
-
-  final def cellProperty(): ObjectProperty[ObservableList[Cell]] = {
-    folders
-  }
+  @BeanProperty val folders: collections.ObservableList[Cell] = FXCollections.observableArrayList()
+  val foldersProperty: ObjectProperty[ObservableList[Cell]] = new SimpleObjectProperty[ObservableList[Cell]](this, "folders")
 
 
 }

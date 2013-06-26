@@ -5,10 +5,9 @@ import javafx.scene.control.ListCell
 
 
 /**
-
-  */
-/**
- *
+ * irina
+ * Date: 6/26/13
+ * Time: 6:48 PM
  */
 class FolderListCellScala() extends ListCell[Cell]() {
 

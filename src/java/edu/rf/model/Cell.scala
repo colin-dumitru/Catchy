@@ -4,11 +4,9 @@ import javafx.scene.Node
 import javafx.beans.property.SimpleStringProperty
 
 /**
- * Created with IntelliJ IDEA.
- * User: irina
- * Date: 6/24/13
- * Time: 7:09 PM
- * To change this template use File | Settings | File Templates.
+ * irina
+ * Date: 6/26/13
+ * Time: 6:48 PM
  */
 trait Cell {
 

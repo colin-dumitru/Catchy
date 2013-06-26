@@ -7,8 +7,10 @@ import javafx.beans.property.SimpleStringProperty
 
 
 /**
-
-  */
+ * irina
+ * Date: 6/26/13
+ * Time: 6:48 PM
+ */
 case class Folder(id: Int, name: String) extends Cell {
 
 

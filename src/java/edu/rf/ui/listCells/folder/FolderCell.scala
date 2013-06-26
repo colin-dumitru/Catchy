@@ -9,8 +9,10 @@ import edu.rf.model.Feed
 import edu.rf.ui.Main
 
 /**
-
-  */
+ * irina
+ * Date: 6/26/13
+ * Time: 6:48 PM
+ */
 class FolderCell extends HBox {
 
   def init {

@@ -1,12 +1,18 @@
 package edu.rf.ui
 
-
 import javafx.application.Application
 import javafx.fxml.{JavaFXBuilderFactory, FXMLLoader}
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.stage.Stage
 import java.net.URL
+
+/**
+ * irina
+ * Date: 6/22/13
+ * Time: 6:48 PM
+ */
+
 
 object Main {
 

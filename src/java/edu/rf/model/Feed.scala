@@ -7,11 +7,9 @@ import javafx.scene.control.Label
 import javafx.beans.property.SimpleStringProperty
 
 /**
- * Created with IntelliJ IDEA.
- * User: irina
- * Date: 6/24/13
- * Time: 6:14 PM
- * To change this template use File | Settings | File Templates.
+ * irina
+ * Date: 6/26/13
+ * Time: 6:48 PM
  */
 case class Feed(id: Int, folderId: Int, name: String, url: String, showNotifications: Int) extends Cell {
   override def updateItem(index: Int): Label = {

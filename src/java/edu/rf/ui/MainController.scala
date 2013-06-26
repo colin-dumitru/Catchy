@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.control.{ListCell, ListView}
 import javafx.collections.{ObservableList, FXCollections}
 import edu.rf.ui.listCells.FolderListCellScala
-import edu.rf.model.{Feed, CellType, Folder}
+import edu.rf.model.{Feed, Cell, Folder}
 import java.net.URL
 import java.util.ResourceBundle
 import java.util
@@ -25,9 +25,9 @@ class MainController extends Initializable {
   private val contentPane: AnchorPane = null
 
   @FXML
-  private val folderList: ListView[CellType] = null
+  private val folderList: ListView[Cell] = null
 
-  final val listFolderFeeds: ObservableList[CellType] = FXCollections.observableArrayList(new util.ArrayList[CellType]);
+  final val listFolderFeeds: ObservableList[Cell] = FXCollections.observableArrayList(new util.ArrayList[Cell]);
 
 
   def initialize(p1: URL, p2: ResourceBundle) {
@@ -36,12 +36,12 @@ class MainController extends Initializable {
 
 
   def initFolderList() {
-    val folders: util.ArrayList[CellType] = Folder.getFolders.asInstanceOf[util.ArrayList[CellType]];
+    val folders: util.ArrayList[Cell] = Folder.getFolders.asInstanceOf[util.ArrayList[Cell]];
     folderList.setItems(listFolderFeeds)
     listFolderFeeds.addAll(folders);
-    folderList.setCellFactory(new Callback[ListView[CellType],
-      ListCell[CellType]]() {
-      def call(folderList: ListView[CellType]): ListCell[CellType] = {
+    folderList.setCellFactory(new Callback[ListView[Cell],
+      ListCell[Cell]]() {
+      def call(folderList: ListView[Cell]): ListCell[Cell] = {
         val listOfFolders: FolderListCellScala = new FolderListCellScala();
         listOfFolders.init;
         listOfFolders;
@@ -70,13 +70,10 @@ class MainController extends Initializable {
 
   def showFeedsForFolder(feeds: util.ArrayList[Feed], index: Int, noOfFeeds: Int) = {
     listFolderFeeds.addAll(index + 1, feeds)
-    listFolderFeeds.get(index).asInstanceOf[Folder].setNoOfFeeds(noOfFeeds)
-    listFolderFeeds.get(index).asInstanceOf[Folder].setExpanding(true);
   }
 
   def hideFeedsForFolder(start: Int, end: Int) = {
     listFolderFeeds.remove(start, end)
-    listFolderFeeds.get(start - 1).asInstanceOf[Folder].setExpanding(false)
   }
 
 

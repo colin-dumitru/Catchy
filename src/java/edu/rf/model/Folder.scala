@@ -2,29 +2,27 @@ package edu.rf.model
 
 import edu.rf.db.DbConnection
 import java.util
+import edu.rf.ui.listCells.folder.FolderCell
 
 
 /**
 
   */
-case class Folder(id: Int, name: String) extends CellType {
-  private var noOfFeeds = 0
-  private var expanding = false;
+case class Folder(id: Int, name: String) extends Cell {
 
-  def setNoOfFeeds(feeds: Int) {
-    noOfFeeds = feeds
+  private val folderCell: FolderCell = generateFolderCell()
+
+  def updateItem(index: Int): FolderCell = {
+    folderCell.setIndex(index)
+    folderCell.setId(this.id)
+    folderCell.setName(this.name)
+    folderCell
   }
 
-  def getNoOfFeeds(): Int = {
-    noOfFeeds
-  }
-
-  def setExpanding(value: Boolean) {
-    expanding = value
-  }
-
-  def getExpanding(): Boolean = {
-    expanding
+  private def generateFolderCell(): FolderCell = {
+    val cell = new FolderCell()
+    cell.init
+    cell
   }
 }
 

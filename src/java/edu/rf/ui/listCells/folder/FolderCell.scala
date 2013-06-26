@@ -56,6 +56,7 @@ class FolderCell extends HBox {
       override def handle(e: ActionEvent) = {
         if (showFeedsButton.getText.equals("+")) {
           val feeds = Feed.getFeedByFolder(folderId)
+          noOfFeeds = feeds.size();
           Main.getController().showFeedsForFolder(feeds, folderIndexInList, feeds.size())
           showFeedsButton.setText("-")
         }
@@ -70,6 +71,24 @@ class FolderCell extends HBox {
   def changeShowFeedsButton() {
     showFeedsButton.setText("-");
   }
+
+
+  def setIndex(index: Int) {
+    folderIndexInList = index;
+  }
+
+  def setName(name: String) {
+    folderName.setText(name);
+  }
+
+  def setId(id: Int) {
+    folderId = id;
+  }
+
+  def setNoOfFeed(feeds: Int) {
+    noOfFeeds = feeds;
+  }
+
 
   private[listCells] var showFeedsButton: Button = new Button("+")
   private[listCells] var optionsFeedButton: Button = new Button

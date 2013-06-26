@@ -3,6 +3,7 @@ package edu.rf.model
 import java.util
 import edu.rf.db.DbConnection
 import org.srhea.scalaqlite.SqlInt
+import javafx.scene.control.Label
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,7 +12,13 @@ import org.srhea.scalaqlite.SqlInt
  * Time: 6:14 PM
  * To change this template use File | Settings | File Templates.
  */
-case class Feed(id: Int, folderId: Int, title: String, url: String, showNotifications: Int) extends CellType {
+case class Feed(id: Int, folderId: Int, name: String, url: String, showNotifications: Int) extends Cell {
+  override def updateItem(index: Int): Label = {
+    var feedName: Label = new Label();
+    feedName.setStyle("-fx-background-color: white;")
+    feedName.setText(this.name);
+    feedName
+  }
 }
 
 object Feed {

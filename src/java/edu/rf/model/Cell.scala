@@ -1,5 +1,7 @@
 package edu.rf.model
 
+import javafx.scene.Node
+
 /**
  * Created with IntelliJ IDEA.
  * User: irina
@@ -7,6 +9,9 @@ package edu.rf.model
  * Time: 7:09 PM
  * To change this template use File | Settings | File Templates.
  */
-trait CellType {
+trait Cell {
+  val id: Int
+  val name: String
 
+  def updateItem(index: Int): Node
 }

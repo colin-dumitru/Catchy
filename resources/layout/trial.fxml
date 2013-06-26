@@ -20,7 +20,9 @@
                                 <Button id="g" alignment="CENTER" cancelButton="false" layoutX="14.0" layoutY="14.0"
                                         mnemonicParsing="false" prefWidth="135.0" styleClass="green" text="Button"/>
                                 <ListView fx:id="folderList" layoutX="14.0" layoutY="54.0" prefHeight="432.0"
-                                          prefWidth="195.99990000000253"/>
+                                          prefWidth="195.99990000000253">
+
+                                </ListView>
                             </children>
                         </Pane>
                     </children>

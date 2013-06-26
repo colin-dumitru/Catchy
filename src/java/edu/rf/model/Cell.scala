@@ -1,6 +1,7 @@
 package edu.rf.model
 
 import javafx.scene.Node
+import javafx.beans.property.SimpleStringProperty
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,8 +11,22 @@ import javafx.scene.Node
  * To change this template use File | Settings | File Templates.
  */
 trait Cell {
-  val id: Int
-  val name: String
+
+  var idCell: SimpleStringProperty
+  var nameCell: SimpleStringProperty
+
+  def setIdCell(id: String) = {
+    this.idCell.set(id)
+  }
+
+  def getIdCell(): String = this.idCell.get()
+
+  def setNameCell(name: String) = {
+    this.nameCell.set(name)
+  }
+
+  def getNameCell(): String = nameCell.get()
 
   def updateItem(index: Int): Node
+
 }

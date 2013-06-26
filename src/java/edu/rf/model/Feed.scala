@@ -4,6 +4,7 @@ import java.util
 import edu.rf.db.DbConnection
 import org.srhea.scalaqlite.SqlInt
 import javafx.scene.control.Label
+import javafx.beans.property.SimpleStringProperty
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +20,9 @@ case class Feed(id: Int, folderId: Int, name: String, url: String, showNotificat
     feedName.setText(this.name);
     feedName
   }
+
+  var idCell: SimpleStringProperty = null
+  var nameCell: SimpleStringProperty = null
 }
 
 object Feed {

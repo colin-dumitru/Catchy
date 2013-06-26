@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.control.{ListCell, ListView}
 import javafx.collections.{ObservableList, FXCollections}
 import edu.rf.ui.listCells.FolderListCellScala
-import edu.rf.model.{Feed, Cell, Folder}
+import edu.rf.model.{Model, Cell, Feed, Folder}
 import java.net.URL
 import java.util.ResourceBundle
 import java.util
@@ -27,18 +27,22 @@ class MainController extends Initializable {
   @FXML
   private val folderList: ListView[Cell] = null
 
-  final val listFolderFeeds: ObservableList[Cell] = FXCollections.observableArrayList(new util.ArrayList[Cell]);
+  @FXML
+  private val modelCell: Model = new Model();
+
+  final val listFolderFeeds: ObservableList[Cell] = FXCollections.observableArrayList(Folder.getFolders());
 
 
   def initialize(p1: URL, p2: ResourceBundle) {
-    initFolderList()
+    //initFolderList()
+    modelCell.setFolders(listFolderFeeds)
   }
 
 
   def initFolderList() {
     val folders: util.ArrayList[Cell] = Folder.getFolders.asInstanceOf[util.ArrayList[Cell]];
     folderList.setItems(listFolderFeeds)
-    listFolderFeeds.addAll(folders);
+    //listFolderFeeds.addAll(folders);
     folderList.setCellFactory(new Callback[ListView[Cell],
       ListCell[Cell]]() {
       def call(folderList: ListView[Cell]): ListCell[Cell] = {

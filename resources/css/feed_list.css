@@ -1,0 +1,15 @@
+.feedListPane {
+    -fx-background-color: #4885a2;
+    -fx-effect: dropshadow(one-pass-box, #353535, 20, 0.0, 0, 0);
+}
+
+.feedList {
+    -fx-background-color: white;
+}
+
+.feedLabel {
+    -fx-font-family: Tilium;
+    -fx-background-color: transparent;
+    -fx-font-size: 40;
+    -fx-text-fill: #c8e7ff;
+}

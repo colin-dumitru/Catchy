@@ -1,6 +1,6 @@
 package edu.catchy
 
-import org.srhea.scalaqlite.SqliteDb
+import edu.catchy.db.Sqlite3
 
 /**
  * irina
@@ -8,5 +8,5 @@ import org.srhea.scalaqlite.SqliteDb
  * Time: 2:08 PM
  */
 object R {
-  val connection = new SqliteDb(getClass.getResource("/db/main.sqlite").getPath())
+  val connection = new Sqlite3
 }

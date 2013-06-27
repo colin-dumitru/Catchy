@@ -15,10 +15,8 @@ case class Folder(id: Int, name: String) {
 object Folder {
 
   def getAll: Seq[Folder] = {
-    R.connection.prepare[Iterator[Folder]]("SELECT * from folder") {
-      stmt => stmt.query() {
-        iter => iter.map(row => new Folder(row(0).toInt, row(1).toString))
-      }
+    R.connection.query("SELECT * from folder") {
+      stmt => new Folder(stmt.columnInt(0), stmt.columnString(1))
     }.toSeq
   }
 }

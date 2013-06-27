@@ -5,9 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <Pane fx:controller="edu.catchy.ui.feedList.FeedListController" layoutX="0.0" layoutY="0.0"
-      onMouseEntered="#hoverSidePane"
       xmlns:fx="http://javafx.com/fxml"
-      onMouseExited="#hoverSidePaneLeave" prefHeight="500.0" prefWidth="219.0"
+      prefHeight="500.0" prefWidth="219.0"
       style="-fx-background-color: lightblue;">
     <fx:define>
         <FeedListContext fx:id="context"/>

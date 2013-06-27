@@ -1,4 +1,4 @@
-package edu.rf.notification
+package edu.catchy.notification
 
 
 /**

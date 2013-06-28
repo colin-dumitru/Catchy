@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.stage.Stage
 import javafx.scene.layout.Pane
+import javafx.scene.text.Font
 
 /**
  * irina
@@ -19,6 +20,13 @@ object Main {
 }
 
 class Main extends Application {
+
+
+  override def init() {
+    super.init()
+
+    Font.loadFont(getClass.getResource("/font/tilium.otf").toExternalForm, 12)
+  }
 
   @Override
   def start(primaryStage: Stage) {

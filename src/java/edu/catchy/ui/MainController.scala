@@ -1,11 +1,13 @@
 package edu.catchy.ui
 
-import javafx.fxml.FXML
+import javafx.fxml.{Initializable, FXML}
 import javafx.scene.layout.AnchorPane
 import javafx.animation.TranslateTransition
 import javafx.animation.Interpolator._
 import javafx.util.Duration
 import javafx.scene.input.MouseEvent
+import java.net.URL
+import java.util.ResourceBundle
 
 /**
  * Catalin Dumitru
@@ -13,10 +15,13 @@ import javafx.scene.input.MouseEvent
  * Time: 5:13 PM
  */
 
-class MainController {
+class MainController extends Initializable {
   @FXML
   private val contentPane: AnchorPane = null
 
+
+  def initialize(p1: URL, p2: ResourceBundle) {
+  }
 
   def hoverSidePane(event: MouseEvent) {
     val transition = new TranslateTransition(Duration.millis(400), contentPane)
@@ -35,6 +40,4 @@ class MainController {
 
     transition.play()
   }
-
-
 }

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 <?import java.net.URL?>
 <Pane layoutX="0.0" layoutY="0.0" prefHeight="500.0" prefWidth="220.0" style="" styleClass="feedListPane"
       xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.feedList.FeedListController">
@@ -21,9 +20,4 @@
     </stylesheets>
     <Label labelFor="$folderList" layoutX="14.0" layoutY="7.0" mouseTransparent="false" styleClass="feedLabel"
            text="Feeds" wrapText="false"/>
-    <Label layoutX="170.0" layoutY="7.0" text="Label">
-        <font>
-            <Font name="Kedage Bold" size="13.0"/>
-        </font>
-    </Label>
 </Pane>

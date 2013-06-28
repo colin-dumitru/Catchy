@@ -1,0 +1,6 @@
+.parentFeedTitle {
+    -fx-font-family: "TitilliumText25L";
+    -fx-background-color: transparent;
+    -fx-font-size: 40;
+    -fx-text-fill: #3f3f3f;
+}

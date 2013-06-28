@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<ListView layoutX="234.0" layoutY="54.0" prefHeight="432.0" prefWidth="397.0"/>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane prefHeight="500.0" prefWidth="260.0" xmlns:fx="http://javafx.com/fxml">
+    <ListView prefHeight="410.0" prefWidth="232.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+              AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0"/>
+    <Label styleClass="parentFeedTitle" text="Feed Title" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0"
+           AnchorPane.topAnchor="10.0"/>
+    <stylesheets>
+        <URL value="@../css/item_list.css"/>
+    </stylesheets>
+</AnchorPane>

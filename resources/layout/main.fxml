@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?scenebuilder-classpath-element ../../out/production/RichFeed?>
+
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <GridPane alignment="CENTER" hgap="10.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="500.0"
           vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.MainController">
     <children>
-        <Pane prefHeight="500.0" prefWidth="168.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <AnchorPane id="AnchorPane" fx:id="contentPane" prefHeight="500.0" prefWidth="480.0" style=""
+                    GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <AnchorPane id="AnchorPane" fx:id="contentPane" layoutX="0.0" layoutY="0.0" prefHeight="500.0"
-                            prefWidth="481.0" style="">
-                    <children>
-                        <fx:include source="item_list.fxml" layoutX="234.0" layoutY="14.0" prefHeight="472.0"
-                                    prefWidth="247.0"/>
-                        <fx:include source="feed_list.fxml"/>
-                    </children>
-                </AnchorPane>
+                <fx:include source="feed_list.fxml" prefHeight="500.0" prefWidth="221.0" AnchorPane.bottomAnchor="0.0"
+                            AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                <fx:include source="item_list.fxml" prefHeight="432.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0"
+                            AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
             </children>
-        </Pane>
+        </AnchorPane>
     </children>
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>

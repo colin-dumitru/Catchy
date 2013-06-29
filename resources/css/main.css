@@ -1,0 +1,44 @@
+.root {
+    focused: #3cafff;
+}
+
+.scroll-bar {
+    -fx-background-color: darkgray;
+    -fx-background-insets: 0, 1;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #343434;
+    -fx-background-radius: 0px;
+}
+
+.scroll-bar:horizontal .increment-button, .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 6 0 6 0;
+}
+
+.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 6 0 6;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.corner {
+    -fx-background-color: #000000;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+.text-input {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: derive(focused, 50%);
+    -fx-background-color: #f2f2f2;
+}

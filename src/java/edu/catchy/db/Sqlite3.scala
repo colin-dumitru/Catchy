@@ -12,6 +12,13 @@ import scala.collection.mutable
 class Sqlite3 {
   val connection = new SQLiteConnection(new File(getClass.getResource("/db/main.sqlite").getPath)).open(true)
 
+  def execute(query: String, params: Any*) {
+    val statement = connection.prepare(query)
+
+    bindParameters(statement, params)
+    statement.step()
+  }
+
   def query[R](query: String, params: Any*)(f: (SQLiteStatement) => R): Seq[R] = {
     var ret = new mutable.MutableList[R]()
     val statement = connection.prepare(query)
@@ -25,12 +32,12 @@ class Sqlite3 {
   }
 
 
-  def bindParameters[R](statement: SQLiteStatement, params: Seq[Any]) {
+  private def bindParameters[R](statement: SQLiteStatement, params: Seq[Any]) {
     for (param <- params.zipWithIndex) param._1 match {
-      case p: String => statement.bind(param._2, p)
-      case p: Double => statement.bind(param._2, p)
-      case p: Long => statement.bind(param._2, p)
-      case p: Int => statement.bind(param._2, p)
+      case p: String => statement.bind(param._2 + 1, p)
+      case p: Double => statement.bind(param._2 + 1, p)
+      case p: Long => statement.bind(param._2 + 1, p)
+      case p: Int => statement.bind(param._2 + 1, p)
       case _ => throw new RuntimeException("Unsupported parameter type: " + param._1.getClass.getName)
     }
   }

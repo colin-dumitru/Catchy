@@ -20,5 +20,4 @@ class FolderCellController {
   def initialize() {
 
   }
-
 }

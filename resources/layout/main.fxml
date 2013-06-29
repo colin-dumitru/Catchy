@@ -4,8 +4,8 @@
 
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<GridPane alignment="CENTER" hgap="10.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="500.0"
-          vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.MainController">
+<GridPane alignment="CENTER" depthTest="ENABLE" hgap="10.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0"
+          prefWidth="500.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.MainController">
     <children>
         <AnchorPane id="AnchorPane" fx:id="contentPane" prefHeight="500.0" prefWidth="480.0" style=""
                     GridPane.columnIndex="0" GridPane.rowIndex="0">

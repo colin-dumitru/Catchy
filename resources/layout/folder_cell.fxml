@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.net.URL?>
-<AnchorPane id="AnchorPane" fx:id="folderRoot" prefHeight="36.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml"
+<AnchorPane id="AnchorPane" fx:id="folderRoot" prefHeight="36.0" prefWidth="190.0" xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.catchy.ui.feedList.controller.FolderCellController">
     <children>
         <Label fx:id="folderName" layoutX="41.0" layoutY="9.0" prefWidth="137.0" text="Folder Name"/>

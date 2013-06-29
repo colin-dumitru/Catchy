@@ -1,11 +1,11 @@
-package edu.catchy.ui.feedList
+package edu.catchy.ui.feedList.controller
 
 import javafx.fxml.FXML
 import javafx.scene.control.{ListCell, ListView}
 import edu.catchy.ui.feedList.model.{FeedListCell, Listable, FeedListContext}
-import edu.catchy.model.Folder
+import edu.catchy.model.{Feed, Folder}
 import javafx.util.Callback
-import edu.catchy.ui.model.FolderCell
+import edu.catchy.ui.model.{FeedCell, FolderCell}
 import scala.collection.JavaConversions._
 
 /**
@@ -19,11 +19,13 @@ class FeedListController {
   @FXML
   private val context: FeedListContext = null
 
-  final val feedList = Folder.getAll map (folder => new Folder(folder) with FolderCell)
+  final val folders = Folder.getAll map (folder => new Folder(folder) with FolderCell)
+  final val feeds = Feed.getFeedByFolderId(-1) map (feed => new Feed(feed) with FeedCell)
 
   def initialize() {
     initFolderList()
-    context.feedList.addAll(seqAsJavaList(feedList))
+    context.feedList.addAll(seqAsJavaList(folders))
+    context.feedList.addAll(seqAsJavaList(feeds))
   }
 
   def initFolderList() {

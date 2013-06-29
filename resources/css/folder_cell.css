@@ -4,7 +4,7 @@
 }
 
 .folderButton:hover {
-    -fx-background-color: #61bfff;
+    -fx-background-color: derive(focused, 80%);
 }
 
 .wrappingPane {

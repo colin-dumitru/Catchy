@@ -15,7 +15,7 @@
 }
 
 .feedList .list-cell:filled:selected:focused, .feedList  .list-cell:filled:selected {
-    -fx-background-color: #3cafff;
+    -fx-background-color: focused;
     -fx-text-fill: white;
 }
 
@@ -28,5 +28,5 @@
 }
 
 .feedList .list-cell:filled:hover {
-    -fx-background-color: #acd9f5;
+    -fx-background-color: derive(focused, 50%);
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../out/production/RichFeed?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" fx:id="feedRoot" depthTest="INHERIT" maxHeight="110.0" minHeight="35.0" minWidth="190.0"
+            prefHeight="35.0" prefWidth="190.0" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.catchy.ui.feedList.controller.FeedCellController">
+    <children>
+        <Label id="folderName" fx:id="feedName" layoutX="41.0" layoutY="9.0" prefWidth="137.0" text="Feed Name"/>
+        <Button layoutX="0.0" layoutY="0.0" minWidth="28.0" mnemonicParsing="false" onMouseClicked="#expandClicked"
+                prefHeight="33.0" prefWidth="35.0" styleClass="feedButton" text="">
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../img/feed.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+            <stylesheets>
+                <URL value="@../css/feed_cell.css"/>
+            </stylesheets>
+        </Button>
+        <AnchorPane id="AnchorPane" fx:id="optionPane" prefHeight="80.0" visible="false" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+            <children>
+                <Label layoutX="3.0" layoutY="3.0" prefHeight="25.0" prefWidth="44.0" text="name">
+                    <labelFor>
+                        <TextField fx:id="nameInput" layoutX="47.0" layoutY="0.0" prefHeight="25.0" prefWidth="137.0"/>
+                    </labelFor>
+                </Label>
+                <fx:reference source="nameInput"/>
+                <Label layoutX="24.0" layoutY="31.0" prefHeight="19.0" text="url">
+                    <labelFor>
+                        <TextField fx:id="urlInput" layoutX="47.0" layoutY="28.0" prefHeight="25.0" prefWidth="137.0"/>
+                    </labelFor>
+                </Label>
+                <fx:reference source="urlInput"/>
+                <Button graphicTextGap="0.0" layoutX="118.0" layoutY="47.0" minWidth="32.0" mnemonicParsing="false"
+                        onMouseClicked="#saveClicked" prefHeight="32.0" prefWidth="32.0" styleClass="checkButton"
+                        text="">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/check.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button layoutX="146.0" layoutY="47.0" minWidth="32.0" mnemonicParsing="false"
+                        onMouseClicked="#cancelClicked" prefHeight="32.0" prefWidth="32.0" styleClass="checkButton"
+                        text="">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/cancel.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+    <stylesheets>
+        <URL value="@../css/feed_cell.css"/>
+    </stylesheets>
+</AnchorPane>

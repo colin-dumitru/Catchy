@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <AnchorPane id="rootPane" prefHeight="500.0" prefWidth="220.0" styleClass="feedListPane"
-            xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.feedList.FeedListController">
+            xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.feedList.controller.FeedListController">
     <fx:define>
         <FeedListContext fx:id="context"/>
     </fx:define>
-
     <children>
         <ListView fx:id="folderList" focusTraversable="true" items="${context.feedList}" opacity="1.0"
                   orientation="VERTICAL" prefHeight="440.0" prefWidth="210.0" styleClass="feedList"
-                  AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+                  AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0"
                   AnchorPane.topAnchor="55.0"/>
         <Label labelFor="$folderList" layoutX="4.0" layoutY="0.0" mouseTransparent="false" styleClass="feedLabel"
                text="Feeds" wrapText="false"/>

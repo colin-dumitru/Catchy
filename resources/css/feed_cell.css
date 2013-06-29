@@ -1,0 +1,21 @@
+.feedButton {
+    -fx-background-color: transparent;
+    -fx-background-radius: 2;
+}
+
+.feedButton:hover {
+    -fx-background-color: derive(focused, 80%);
+}
+
+.wrappingPane {
+    -fx-background-color: white;
+}
+
+.checkButton {
+    -fx-background-color: transparent;
+}
+
+.checkButton:hover {
+    -fx-background-radius: 2;
+    -fx-background-color: derive(focused, 80%);
+}

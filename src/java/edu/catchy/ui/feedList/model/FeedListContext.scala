@@ -11,6 +11,6 @@ import java.util
  * Time: 6:48 PM
  */
 class FeedListContext {
-  @BeanProperty val folders: util.List[Listable] = FXCollections.observableArrayList()
-  val foldersProperty: ObjectProperty[util.List[Listable]] = new SimpleObjectProperty[util.List[Listable]](this, "folders")
+  @BeanProperty val feedList: util.List[Listable] = FXCollections.observableArrayList()
+  val feedListProperty: ObjectProperty[util.List[Listable]] = new SimpleObjectProperty[util.List[Listable]](this, "feedList")
 }

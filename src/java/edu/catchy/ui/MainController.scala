@@ -20,7 +20,7 @@ class MainController extends Initializable {
   private val contentPane: AnchorPane = null
 
 
-  def initialize(p1: URL, p2: ResourceBundle) {
+  def initialize(url: URL, resourceBundle: ResourceBundle) {
   }
 
   def hoverSidePane(event: MouseEvent) {

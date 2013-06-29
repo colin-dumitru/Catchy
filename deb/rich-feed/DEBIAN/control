@@ -1,0 +1,14 @@
+Package: rich-feed
+Version: 0.1
+Section: admin
+Priority: optional
+Architecture: i386
+Depends: e2fsprogs (>= 1.27-2), libc6 (>= 2.2.4-4)
+Suggests: parted-doc
+Conflicts: rich-feed
+Replaces: rich-feed
+Installed-Size: 76
+Maintainer: Catalin Dumitru <colin.dumitru@gmail.com>
+Description: to do
+ to do
+

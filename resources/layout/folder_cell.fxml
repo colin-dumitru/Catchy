@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../out/production/RichFeed?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" fx:id="folderRoot" prefHeight="36.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.catchy.ui.feedList.controller.FolderCellController">
+    <children>
+        <Label fx:id="folderName" layoutX="41.0" layoutY="9.0" prefWidth="137.0" text="Folder Name"/>
+        <Button layoutX="0.0" layoutY="0.0" minWidth="28.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="35.0"
+                styleClass="folderButton" text="">
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../img/folder_black.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+    <stylesheets>
+        <URL value="@../css/folder_cell.css"/>
+    </stylesheets>
+</AnchorPane>

@@ -4,7 +4,7 @@
 }
 
 .feedList {
-    -fx-background-color: white;
+    -fx-background-color: #5baacf;
 }
 
 .feedLabel {
@@ -12,4 +12,21 @@
     -fx-background-color: transparent;
     -fx-font-size: 40;
     -fx-text-fill: #c8e7ff;
+}
+
+.feedList .list-cell:filled:selected:focused, .feedList  .list-cell:filled:selected {
+    -fx-background-color: #3cafff;
+    -fx-text-fill: white;
+}
+
+.feedList .list-cell {
+    -fx-background-color: white;
+}
+
+.feedList .list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.feedList .list-cell:filled:hover {
+    -fx-background-color: #acd9f5;
 }

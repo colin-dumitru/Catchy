@@ -2,14 +2,19 @@
 
 <?scenebuilder-classpath-element ../../out/production/RichFeed?>
 
+<?import edu.catchy.ui.feedList.model.FeedListContext?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="220.0" styleClass="feedListPane"
+<AnchorPane id="rootPane" prefHeight="500.0" prefWidth="220.0" styleClass="feedListPane"
             xmlns:fx="http://javafx.com/fxml" fx:controller="edu.catchy.ui.feedList.FeedListController">
+    <fx:define>
+        <FeedListContext fx:id="context"/>
+    </fx:define>
+
     <children>
-        <ListView fx:id="folderList" focusTraversable="true" items="${context.folders}" opacity="1.0"
+        <ListView fx:id="folderList" focusTraversable="true" items="${context.feedList}" opacity="1.0"
                   orientation="VERTICAL" prefHeight="440.0" prefWidth="210.0" styleClass="feedList"
                   AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
                   AnchorPane.topAnchor="55.0"/>

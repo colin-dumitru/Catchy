@@ -11,6 +11,8 @@ class FeedListCell extends ListCell[Listable] {
   override def updateItem(item: Listable, empty: Boolean) {
     super.updateItem(item, empty)
 
-    setGraphic(item.getRoot)
+    if (!empty) {
+      setGraphic(item.getRoot)
+    }
   }
 }

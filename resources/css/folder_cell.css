@@ -1,0 +1,12 @@
+.folderButton {
+    -fx-background-color: transparent;
+    -fx-background-radius: 2;
+}
+
+.folderButton:hover {
+    -fx-background-color: #61bfff;
+}
+
+.wrappingPane {
+    -fx-background-color: white;
+}
